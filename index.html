@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html  lang="en">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="app.js"></script>
+    <title>Country Calling Codes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container"  ng-app='CountryCall'>
+       <input class="form-control" type="text" placeholder= "Please Search Here" ng-model="search" width="80%"/>
+       <table ng-controller='CountryController' width="80%" class="table">
+			<tr>
+				<th> Name </th>
+				<th> Shoutcut </th>
+				<th> calling code </th>
+			</tr>
+			<tr ng-repeat="x in countries | filter : search">
+				<td>{{x.name}}</td>
+				<td>{{x.short}}</td>
+				<td>{{x.code}}</td>
+			</tr>
+		</table>
+
+        
+    </div>
+  </body>
+</html>
