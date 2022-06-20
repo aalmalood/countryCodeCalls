@@ -4,39 +4,20 @@
     .controller('CountryController', CountryController)
 	.service('CountryListService', CountryListService)
 	.constant('ApiBasePath', "./countries.json")
-	.directive('countryList', countryListDirective);
-
-
-	function countryListDirective() {
-	var ddo = {
-		restrict: "E",
+	.component('countryList', {
 		templateUrl: 'country.html',
-		scope: {
-		countries: '<'
-		},
-		controller: countryListDirectiveController,
-		controllerAs: 'dctrl',
-		bindToController: true
-	};
+		bindings: {
+			countries: '<'
+			}
+	});
 
-	return ddo;
-	}
-
-	function countryListDirectiveController() {
-		var dctrl = this;
-	dctrl.isempty = function (){
-		if (dctrl.foundItems.length === 0 && dctrl.foundItems !== 'undefined'){
-			return true;
-		}
-		return false;
-	};
-	}
 
     function CountryController(CountryListService) {
 
 	  var promise = CountryListService.getCountryList();
 	  var countrys = this;
 	  countrys.search = "";
+	  countrys.countries = [];
 		promise.then(function (response) {
 			countrys.countries = response.data;
 		})
