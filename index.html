@@ -11,34 +11,20 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script><link rel="icon" type="image/x-icon" href="favicon.ico">
 	
 </head>
-  <body>
+  <body ng-app='CountryCall'>
 	
-    <div class="container"  ng-app='CountryCall'>
-	<h3 align="center"  class="display-3">Country Code Calling Search</h3>
-	<br/>
-	<div class="input-group">
+    <div class="container" ng-controller='CountryController as countrys'  >
+		<h3 align="center"  class="display-3">Country Code Calling Search</h3>
+		<br/>
+		<div class="input-group">
 
-       <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-		<input class="form-control bg-light text-dark" type="text" placeholder= "Please Search Here" ng-model="search" width="80%"/>
-	</div>
-	<br/>
-       <table ng-controller='CountryController' width="80%" class="table table-striped table-hover">
-		<thead class="thead-dark">
-			<tr>
-				<th scope="col"> flag</th>
-				<th scope="col"> Name </th>
-				<th scope="col"> Shoutcut </th>
-				<th scope="col"> calling code </th>
-			</tr>
-		</thead>
-			<tr ng-repeat="x in countries | filter : search">
-				<td>  <img src="flags/Flag_of_{{x.flag}}.png" width="50%" height="50%"></td>
-				<td>{{x.name}}</td>
-				<td>{{x.short}}</td>
-				<td>{{x.code}}</td>
-			</tr>
-
-		</table>
+		<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+			<input class="form-control bg-light text-dark" type="text" placeholder= "Please Search Here" ng-model="countrys.search" width="80%"/>
+		</div>
+		<br/>
+			<country-list countries= "countrys.countries | filter : countrys.search">
+			</country-list>
+		
 
         
     </div>
