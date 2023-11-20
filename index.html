@@ -13,17 +13,17 @@
 </head>
   <body ng-app='CountryCall'>
 	
-    <div class="container" ng-controller='CountryController as countrys'  >
+    <div class="container" ng-controller='PlayerController as pla'  >
 		<h3 align="center"  class="display-3">Country Code Calling Search</h3>
 		<br/>
 		<div class="input-group">
 
 		<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-			<input class="form-control bg-light text-dark" type="text" placeholder= "Please Search Here" ng-model="countrys.search" width="80%"/>
+			<input class="form-control bg-light text-dark" type="text" placeholder= "Please Search Here" ng-model="pla.search" width="80%"/>
 		</div>
 		<br/>
-			<country-list countries= "countrys.countries | filter : countrys.search">
-			</country-list>
+			<player-list countries= "pla.players | filter : pla.search">
+			</player-list>
 		
 
         
